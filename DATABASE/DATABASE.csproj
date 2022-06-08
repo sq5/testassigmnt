@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190724184725_Initial.cs" />
+    <Compile Remove="Migrations\20190724184725_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190724185236_RemoveFields.cs" />
+    <Compile Remove="Migrations\20190724185236_RemoveFields.Designer.cs" />
+    <Compile Remove="Migrations\20190724194606_ChangeProp.cs" />
+    <Compile Remove="Migrations\20190724194606_ChangeProp.Designer.cs" />
+    <Compile Remove="Migrations\20190724202801_ChangeProp1.cs" />
+    <Compile Remove="Migrations\20190724202801_ChangeProp1.Designer.cs" />
+    <Compile Remove="Migrations\20190805125144_ChangeColumns.cs" />
+    <Compile Remove="Migrations\20190805125144_ChangeColumns.Designer.cs" />
+    <Compile Remove="Migrations\20190808213110_change fields.cs" />
+    <Compile Remove="Migrations\20190808213110_change fields.Designer.cs" />
+    <Compile Remove="Migrations\20190808214505_changefields.cs" />
+    <Compile Remove="Migrations\20190808214505_changefields.Designer.cs" />
+    <Compile Remove="Migrations\20190810113001_Initial.cs" />
+    <Compile Remove="Migrations\20190810113001_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190811183823_AddedFiedlds.cs" />
+    <Compile Remove="Migrations\20190811183823_AddedFiedlds.Designer.cs" />
+    <Compile Remove="Migrations\20190812211817_changefields.cs" />
+    <Compile Remove="Migrations\20190812211817_changefields.Designer.cs" />
+    <Compile Remove="Migrations\20190812212046_changefieldrequired.cs" />
+    <Compile Remove="Migrations\20190812212046_changefieldrequired.Designer.cs" />
+    <Compile Remove="Migrations\20190908125830_Add settings table.cs" />
+    <Compile Remove="Migrations\20190908125830_Add settings table.Designer.cs" />
+    <Compile Remove="Migrations\20200105133727_add table invoice.cs" />
+    <Compile Remove="Migrations\20200105133727_add table invoice.Designer.cs" />
+    <Compile Remove="Migrations\20200302205638_add nullable.cs" />
+    <Compile Remove="Migrations\20200302205638_add nullable.Designer.cs" />
+    <Compile Remove="Migrations\20200504170713_change field type versions.cs" />
+    <Compile Remove="Migrations\20200504170713_change field type versions.Designer.cs" />
+    <Compile Remove="Migrations\20200507181228_Add doctype field to contracts.cs" />
+    <Compile Remove="Migrations\20200507181228_Add doctype field to contracts.Designer.cs" />
+    <Compile Remove="Migrations\20200511172821_Add field to DocType entity.cs" />
+    <Compile Remove="Migrations\20200511172821_Add field to DocType entity.Designer.cs" />
+    <Compile Remove="Migrations\20200522070558_Adding fields to metadata and contracts.cs" />
+    <Compile Remove="Migrations\20200522070558_Adding fields to metadata and contracts.Designer.cs" />
+    <Compile Remove="Migrations\20200525055616_Adding fields to metadata and contracts.cs" />
+    <Compile Remove="Migrations\20200525055616_Adding fields to metadata and contracts.Designer.cs" />
+    <Compile Remove="Migrations\20210203133518_Add field to DocType list.cs" />
+    <Compile Remove="Migrations\20210203133518_Add field to DocType list.Designer.cs" />
+    <Compile Remove="Migrations\20220217115415_change clientid nullable clientstemplates.cs" />
+    <Compile Remove="Migrations\20220217115415_change clientid nullable clientstemplates.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.2" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+  </ItemGroup>
+</Project>

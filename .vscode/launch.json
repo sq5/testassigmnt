@@ -1,0 +1,125 @@
+{
+  // Use IntelliSense to find out which attributes exist for C# debugging
+  // Use hover for the description of the existing attributes
+  // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web APP",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/EndocsCloud/bin/Debug/netcoreapp3.1/CloudArchive.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/EndocsCloud",
+      "stopAtEntry": false,
+      "targetArchitecture": "x86_64",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "Background Svc",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build bgsvc",
+      "program": "${workspaceFolder}/BackgroudServices/bin/Debug/netcoreapp3.1/BackgroudServices.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/BackgroudServices",
+      "stopAtEntry": false,
+      "targetArchitecture": "x86_64",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "API",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build api",
+      "program": "${workspaceFolder}/API/bin/Debug/netcoreapp3.1/API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/API",
+      "stopAtEntry": false,
+      "targetArchitecture": "x86_64",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "APIMobile",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build apimobile",
+      "program": "${workspaceFolder}/APIMobile/bin/Debug/netcoreapp3.1/APIMobile.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/APIMobile",
+      "stopAtEntry": false,
+      "targetArchitecture": "x86_64",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "Docker API",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "netCore": {
+        "appProject": "${workspaceFolder}/API/API.csproj"
+      }
+    },
+    {
+      "name": "Docker Background",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "netCore": {
+        "appProject": "${workspaceFolder}/BackgroudServices/BackgroudServices.csproj"
+      }
+    },
+    {
+      "name": "Docker EndocsCloud",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "netCore": {
+        "appProject": "${workspaceFolder}/EndocsCloud/CloudArchive.csproj"
+      }
+    }
+  ]
+}
