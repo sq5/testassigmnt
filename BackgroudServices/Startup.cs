@@ -85,28 +85,9 @@ namespace BackgroudServices
             services.AddSession();
             services.AddAutoMapper(typeof(Startup), typeof(Client), typeof(Organization), typeof(Metadata));
 
-            services.AddScoped<IClientNotification, BackUpClientNotification>();
-            services.AddScoped<IExternalStorageService, YandexExternalStorageService>();
-            services.AddScoped<ICleanBackupStorageService, YandexCleanBackupStorageService>();
-
-            // Add scheduled tasks & scheduler
-            services.AddSingleton<IScheduledTask, DiadocLoadService>();
-            services.AddSingleton<IScheduledTask, DiadocExportService>();
-            services.AddSingleton<IScheduledTask, DiadocSyncMetadataService>();
-            services.AddSingleton<IScheduledTask, DiadocSyncContractService>();
-            services.AddSingleton<IScheduledTask, CleanYandexStorageJob>();
-            services.AddSingleton<IScheduledTask, BackUpClientBackground>();
-            services.AddSingleton<IScheduledTask, CleaningJobBackgroundService>();
-            services.AddSingleton<IScheduledTask, RemoveBlockedClientsService>();
-            services.AddSingleton<IScheduledTask, IMAPBackgroundService>();
-            services.AddSingleton<IScheduledTask, FTPBackgroundService>();
+      
             services.AddSingleton<IScheduledTask, MaintanceBackgroundService>();
-            services.AddSingleton<IScheduledTask, ClientNotificationService>();
-            services.AddSingleton<IScheduledTask, WFUserNotificationService>();
-            services.AddSingleton<IScheduledTask, DeleteRecycledDocumentsService>();
-            services.AddSingleton<IScheduledTask, OCRSenderService>();
-            services.AddSingleton<IScheduledTask, OCRConsumerService>();
-            services.AddSingleton<IScheduledTask, ContractNotificationService>();
+
             //services.AddSingleton<IScheduledTask, MigrationService>();
 
             services.AddScheduler((sender, args) =>
