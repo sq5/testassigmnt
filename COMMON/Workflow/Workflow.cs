@@ -184,7 +184,7 @@ namespace COMMON.Workflow
             bool ret = false;
             try
             {
-                MailConstructor mailer = new MailConstructor(_commonService, _emailSender, _cfg, _currentTheme);
+                MailConstructor mailer = new MailConstructor(_commonService, _dbContext, _cfg, _currentTheme);
                 mailer.SetTemplate(MailTemplate.Approval_Task);
                 string tasktype = modelArr.Count > 0 ? modelArr[0].TaskType : "";
                 var ttype = TaskTypes.Where(x => x.TaskTypeName == tasktype).FirstOrDefault();
@@ -502,7 +502,7 @@ namespace COMMON.Workflow
                 string tasktype = _nextTasks.Any() ? _nextTasks.FirstOrDefault().TaskType : "";
                 Doclink = "<a href='" + _cfg["HttpClient_Address"] + "/newstyle/document/view?ItemId=" + DocID + "&SettName=" + Settname + "'>" + DocName + "</a>";
                 ttype = TaskTypes.Where(x => x.TaskTypeNumber == model.TaskType).FirstOrDefault();
-                MailConstructor mailer = new MailConstructor(_commonService, _emailSender, _cfg, _currentTheme);
+                MailConstructor mailer = new MailConstructor(_commonService, _dbContext, _cfg, _currentTheme);
 
                 if (!model.Agreed)
                     mailer.SetTemplate(MailTemplate.Approval_Decline);
@@ -825,7 +825,7 @@ namespace COMMON.Workflow
                         newtask.Order = task.Order;
                         task.Order = task.Order - 1;
                     }
-                    MailConstructor mailer = new MailConstructor(_commonService, _emailSender, _cfg, _currentTheme);
+                    MailConstructor mailer = new MailConstructor(_commonService, _dbContext, _cfg, _currentTheme);
 
                     var nexttype = TaskTypes.Where(x => x.TaskTypeName == newtask.TaskType).FirstOrDefault();
                     if (nexttype.TaskTypeNumber == 1)

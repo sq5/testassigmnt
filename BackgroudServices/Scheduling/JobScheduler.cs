@@ -25,6 +25,7 @@ namespace BackgroudServices.Scheduling
                 _Schedules.Add("FTPBackgroundService", "0 */2 * * *");
                 _Schedules.Add("IMAPBackgroundService", "0/5 * * * *");
                 _Schedules.Add("MaintanceBackgroundService", "0 0/1 * * *");
+                _Schedules.Add("MailSenderBackgroundService", "* * * * *");
                 _Schedules.Add("ClientNotificationService", "0 3 1/1 * *");
                 _Schedules.Add("WFUserNotificationService", "30 1 * * 1-5");
                 _Schedules.Add("RemoveBlockedClientsService", "0 4 1/1 * *");

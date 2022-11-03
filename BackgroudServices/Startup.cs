@@ -87,6 +87,7 @@ namespace BackgroudServices
 
       
             services.AddSingleton<IScheduledTask, MaintanceBackgroundService>();
+            services.AddSingleton<IScheduledTask, MailSenderBackgroundService>();
 
             //services.AddSingleton<IScheduledTask, MigrationService>();
 

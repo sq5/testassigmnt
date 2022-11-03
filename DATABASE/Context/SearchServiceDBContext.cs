@@ -50,6 +50,7 @@ namespace DATABASE.Context
         public DbSet<AdditionalField> AdditionalFields { get; set; }
         public DbSet<ContractExtended> ContractsExtended { get; set; }
         public DbSet<MetadataExtended> MetadatasExtended { get; set; }
+        public DbSet<EmailQueue> EmailQueue { get; set; }
 
         public SearchServiceDBContext(DbContextOptions<SearchServiceDBContext> options) : base(options)
         {
@@ -75,6 +76,8 @@ namespace DATABASE.Context
 
             builder.Entity<ContractExtended>().ToView("ContractsExtended").HasKey(t => t.Id);
             builder.Entity<MetadataExtended>().ToView("MetadatasExtended").HasKey(t => t.Id);
+            builder.Entity<EmailQueue>().HasIndex(eq => eq.Sent);
+            builder.Entity<EmailQueueDocFile>().HasKey(ed => new {ed.EmailQueueId, ed.DocFileId});
 
             foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {

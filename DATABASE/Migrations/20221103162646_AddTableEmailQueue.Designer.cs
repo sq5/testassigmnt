@@ -3,14 +3,16 @@ using System;
 using DATABASE.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DATABASE.Migrations
 {
     [DbContext(typeof(SearchServiceDBContext))]
-    partial class SearchServiceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221103162646_AddTableEmailQueue")]
+    partial class AddTableEmailQueue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

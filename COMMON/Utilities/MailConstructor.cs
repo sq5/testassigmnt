@@ -30,19 +30,19 @@ namespace COMMON.Utilities
         private List<DocFile> _files;
         private readonly IConfiguration _cfg;
         private readonly ICommonService _commonService;
-        private readonly IEmailService _emailSender;
+        private readonly SearchServiceDBContext _dbContext;
         public MailConstructor(IContextService context)
         {
             _commonService = context.CommonService;
-            _emailSender = context.EmailSender;
+            _dbContext = context.DbContext;
             _cfg = context.Configuration;
             ClearValues();
         }
 
-        public MailConstructor(ICommonService commonService, IEmailService emailSender, IConfiguration configuration = null, string theme = "")
+        public MailConstructor(ICommonService commonService, SearchServiceDBContext dbContext, IConfiguration configuration = null, string theme = "")
         {
             _commonService = commonService;
-            _emailSender = emailSender;
+            _dbContext = dbContext;
             _theme = theme;
             if (configuration != null)
                 _cfg = configuration;
@@ -116,7 +116,7 @@ namespace COMMON.Utilities
         public async Task<bool> SendMail()
         {
             UpdateTemplate();
-            await _emailSender.SendEmailAsync(_Recipients, _Subject, _Text, _files);
+            await SaveEmailToQueue();
             NewMail();
             return true;
         }
@@ -148,7 +148,7 @@ namespace COMMON.Utilities
             _Subject = subject;
             _Recipients = users;
             _Text = body;
-            await _emailSender.SendEmailAsync(_Recipients, _Subject, _Text, _files);
+            await SaveEmailToQueue();
             return true;
         }
         public void NewMail()
@@ -177,6 +177,30 @@ namespace COMMON.Utilities
             }
         }
 
+        private async Task<bool> SaveEmailToQueue()
+        {
+            try
+            {
+                var emailQueueItem = new EmailQueue()
+                {
+                    Recipients = String.Join(',', _Recipients),
+                    Created = DateTime.Now,
+                    Subject = _Subject,
+                    Body = _Text,
+                };
+                emailQueueItem.EmailQueueDocFiles =
+                    _files.Select(f => new EmailQueueDocFile {DocFile = f, EmailQueue = emailQueueItem}).ToList();
+                _dbContext.EmailQueue.Add(emailQueueItem);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                // обработка ошибок в оригинале отсутствует, оставляем заглушки.
+                return false;
+            }
+        }
+        
         private void SetDictionaries()
         {
             MailVariables = new Dictionary<string, string>();
